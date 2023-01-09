@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This custom metadata holds lowest value required for each of the customer classification</description>
+    <fields>
+        <fullName>Lowest_Amount_For_Bronze_Classification__c</fullName>
+        <description>If Total Customer Spend of account is greater than or equal to this value, Account will be classified as Bronze</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If Total Customer Spend of account is greater than or equal to this value, Account will be classified as Bronze</inlineHelpText>
+        <label>Lowest Amount For Bronze Classification</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lowest_Amount_For_Gold_Classification__c</fullName>
+        <description>If Total Customer Spend of account is greater than or equal to this value, Account will be classified as gold</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If Total Customer Spend of account is greater than or equal to this value, Account will be classified as gold</inlineHelpText>
+        <label>Lowest Amount For Gold Classification</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lowest_Amount_For_Silver_Classification__c</fullName>
+        <description>If Total Customer Spend of account is greater than or equal to this value, Account will be classified as SILVER</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If Total Customer Spend of account is greater than or equal to this value, Account will be classified as SILVER</inlineHelpText>
+        <label>Lowest Amount For Silver Classification</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Customer Classification Configuration</label>
+    <pluralLabel>Customer Classification Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

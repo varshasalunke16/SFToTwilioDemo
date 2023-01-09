@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Store auth credentials for Twilio</description>
+    <fields>
+        <fullName>API_Endpoint__c</fullName>
+        <description>Twilio API Endpoint</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>API Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_SID__c</fullName>
+        <description>This is twillio account Id. Login to Twillio to get this information.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Account SID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Auth_Token__c</fullName>
+        <description>This is auth token for Twillio. Login to Twillio to get this information.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Auth Token</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Base_URL__c</fullName>
+        <description>This Stores Endpoint URL for Twilio Functions</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Base URL</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Orgwide_Twilio_Phone_Number__c</fullName>
+        <description>This is Twilio number, from which all SMS will be sent. Login to Twilio to get this information.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Orgwide Twilio Phone Number</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <label>Twilio Auth Information</label>
+    <pluralLabel>Twilio Auth Informations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

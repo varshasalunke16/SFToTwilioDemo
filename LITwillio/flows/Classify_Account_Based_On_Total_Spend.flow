@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Check_If_Customer_Classify_For_Bronze</name>
+        <label>Check If Customer Classify For Bronze</label>
+        <locationX>710</locationX>
+        <locationY>671</locationY>
+        <defaultConnector>
+            <targetReference>No_Classification</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Bronze_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Total_Customer_Spend__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Configuration_For_Account_Classification.Lowest_Amount_For_Bronze_Classification__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Classify_as_BRONZE</targetReference>
+            </connector>
+            <label>Bronze Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_If_Customer_Classify_For_Gold</name>
+        <label>Check If Customer Classify For Gold</label>
+        <locationX>281</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_Customer_Classify_For_Silver</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Gold_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Total_Customer_Spend__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Configuration_For_Account_Classification.Lowest_Amount_For_Gold_Classification__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Classify_as_GOLD</targetReference>
+            </connector>
+            <label>Gold Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Customer_Classify_For_Silver</name>
+        <label>Check if Customer Classify For Silver</label>
+        <locationX>512</locationX>
+        <locationY>551</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_Customer_Classify_For_Bronze</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Silver_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Total_Customer_Spend__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Configuration_For_Account_Classification.Lowest_Amount_For_Silver_Classification__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Classify_as_SILVER</targetReference>
+            </connector>
+            <label>Silver Customer</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Classify Account Based On Total Spend {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Classify Account Based On Total Spend</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Configuration_For_Account_Classification</name>
+        <label>Get Configuration For Account Classification</label>
+        <locationX>281</locationX>
+        <locationY>311</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_If_Customer_Classify_For_Gold</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Total_Customer_Spend_Account_Config</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Customer_Classification_Configuration__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Classify_as_BRONZE</name>
+        <label>Classify as BRONZE</label>
+        <locationX>578</locationX>
+        <locationY>791</locationY>
+        <inputAssignments>
+            <field>Customer_Classification__c</field>
+            <value>
+                <stringValue>BRONZE</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Classify_as_GOLD</name>
+        <label>Classify as GOLD</label>
+        <locationX>50</locationX>
+        <locationY>551</locationY>
+        <inputAssignments>
+            <field>Customer_Classification__c</field>
+            <value>
+                <stringValue>GOLD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Classify_as_SILVER</name>
+        <label>Classify as SILVER</label>
+        <locationX>314</locationX>
+        <locationY>671</locationY>
+        <inputAssignments>
+            <field>Customer_Classification__c</field>
+            <value>
+                <stringValue>SILVER</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>No_Classification</name>
+        <label>No Classification</label>
+        <locationX>842</locationX>
+        <locationY>791</locationY>
+        <inputAssignments>
+            <field>Customer_Classification__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>155</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Configuration_For_Account_Classification</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED({!$Record.Total_Customer_Spend__c})</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1</triggerOrder>
+</Flow>

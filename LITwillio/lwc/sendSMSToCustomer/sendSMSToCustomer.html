@@ -1,0 +1,9 @@
+<template>
+    <div class="slds-card">        
+        <div class="slds-card__body slds-card__body_inner">
+            <h2 class="slds-card__header-title">Send SMS To customer</h2>
+            <lightning-textarea disabled={calloutIsStarted} name="smsbody"></lightning-textarea>
+            <lightning-button onclick={sendSMSFromAccount} variant="brand" label="Send" disabled={calloutIsStarted}></lightning-button>
+        </div>        
+    </div>  
+</template>

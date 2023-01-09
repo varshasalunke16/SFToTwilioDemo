@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This data will be used to send SMS to CEO when customer reaches gold status</description>
+    <fields>
+        <fullName>CEO_Business_Number__c</fullName>
+        <description>This number will be used to send SMS to CEO when custome reaches gold status</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CEO Business Number</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <label>Gold Account Notification CEO SMS Config</label>
+    <pluralLabel>Gold Account Notification CEO SMS Config</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
